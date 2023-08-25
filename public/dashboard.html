@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form id="create-studentdata">
+        <input type="text" placeholder="Student Name" id="student-name">
+        <input type="number" placeholder="Student age" id="student-Age">
+        <input type="email" placeholder="Student email" id="student-email">
+        <input type="number" placeholder="Student number" id="student-number">
+        <input type="number" placeholder="Student father name" id="student-fathername">
+        <input type="number" placeholder="Student  cnic" id="student-cnic">
+        <input type="text" placeholder="Student Address" id="student-parent-Address">
+        <input type="text" placeholder="Student class" id="student-class">
+    </form>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.js"></script>
+    <script>
+
+        document.getElementById("create-studentdata").addEventListener("submit",(e)=>{
+            e.preventDefault()
+            axios.post("/create-student",{
+            name: document.getElementById("student-name").value,
+            newFullName: document.getElementById("newfullname").value,
+            class: document.getElementById("student-class").value,
+            fatherName: document.getElementById("student-fathername").value,
+            cnic: document.getElementById("student-cnic").value,
+            address: document.getElementById("student-parent-Address").value,
+            email: document.getElementById("student-email").value,
+            phoneNumber: document.getElementById("student-number").value,
+            age: document.getElementById("student-Age").value
+        })
+        .then((res)=>{
+            console.log(res.data)
+        })
+        .catch((e)=>{
+            console.log(e)
+
+        })
+      })
+          
+    </script>
+</body>
+</html>

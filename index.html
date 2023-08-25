@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h1>Manage Your Institude WIth us</h1>
+            <h1>Free</h1>
+            <button><a id="navigate-dashboard" href="/registration">create</a></button>
+            <h1 id="usernameDisplayDiv" style="display: none;">Hi <div id="username"></div></h1>
+        </div>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.js"></script>
+    <script>
+
+        axios.get("/userchecking")
+        .then((res)=>{
+            document.getElementById("navigate-dashboard").href = "/v2/dashboard"
+            document.getElementById("navigate-dashboard").innerHTML = "Dashboard"
+            document.getElementById("usernameDisplayDiv").style.display = "block"
+            document.getElementById("username").innerHTML = res.data.name
+            console.log(res)
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
+    </script>
+</body>
+
+</html>
